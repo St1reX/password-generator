@@ -1,5 +1,7 @@
 import os
 import pathlib
+import sys
+
 import csv23
 
 
@@ -23,11 +25,14 @@ class UserKeyWords:
                 pass
 
     def fetch_keyword_list_from_file(self):
-        with open(self.keyword_list_file, 'r', newline='') as csv_file:
-            csv_reader = csv23.reader(csv_file)
-
-            for row in csv_reader:
-                self.keyword_list.append(row[0])
+        try:
+            with open(self.keyword_list_file, 'r', newline='') as csv_file:
+                csv_reader = csv23.reader(csv_file)
+                for row in csv_reader:
+                    self.keyword_list.append(row[0])
+        except Exception as e:
+            print(f"Error reading keyword list: {e}")
+            sys.exit()
 
     def display_keyword_list(self):
         if not self.keyword_list:
@@ -41,17 +46,26 @@ class UserKeyWords:
         input('Press Enter to continue...')
 
     def save_new_keyword_file(self):
-        print('Enter your new keyword')
-        keyword = input()
+        while True:
+            try:
+                print('Enter your new keyword')
+                keyword = input().strip()
 
-        self.keyword_list.append(keyword)
+                if keyword == '':
+                    raise ValueError("Empty keyword")
+                if keyword in self.keyword_list:
+                    raise ValueError('Keyword already exists')
 
-        with open(self.keyword_list_file, 'a', newline='') as csv_file:
-            csv_writer = csv23.writer(csv_file)
-            csv_writer.writerow([keyword])
+                self.keyword_list.append(keyword)
 
-        print(f'Keyword {keyword} saved')
-        input('Press Enter to continue...')
+                print(f'Keyword {keyword} saved')
+                input('Press Enter to continue...')
+                break
+            except Exception as e:
+                print(f"Error while adding new keyword: {e}")
+                print("Provide a valid keyword")
+                input('Press Enter to continue...')
+                os.system('cls')
 
     def delete_certain_keyword_file(self):
         if not self.keyword_list:
@@ -67,13 +81,14 @@ class UserKeyWords:
                 self.keyword_list.remove(keyword)
                 print(f'Keyword {keyword} deleted')
 
-                with open(self.keyword_list_file, 'w', newline='') as csv_file:
-                    csv_writer = csv23.writer(csv_file)
-
-                    for keyword in self.keyword_list:
-                        csv_writer.writerow([keyword])
-
         input('Press Enter to continue...')
+
+    def update_csv(self):
+        with open(self.keyword_list_file, 'w', newline='') as csv_file:
+            csv_writer = csv23.writer(csv_file)
+
+            for keyword in self.keyword_list:
+                csv_writer.writerow([keyword])
 
     def user_key_word_menu(self):
         while True:
@@ -85,7 +100,7 @@ class UserKeyWords:
             print('3. Display keywords')
             print('4. Continue to password generation')
 
-            option = input()
+            option = input("Choose an option (1-4):\n")
 
             match option:
                 case '1':
@@ -101,6 +116,7 @@ class UserKeyWords:
                         input('Press Enter to continue...')
                     else:
                         os.system('cls')
+                        self.update_csv()
                         return
                 case _:
                     print('Invalid option')
