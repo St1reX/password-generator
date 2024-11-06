@@ -14,5 +14,7 @@ It is designed with an intuitive menu and error handling to guide users through 
 
 ## Requirements:
 To run this project, you need to install the `csv23` library:
-  pip install csv23
 
+```CLI
+  pip install csv23
+```
