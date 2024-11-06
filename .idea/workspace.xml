@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6587477-acb4-4568-b7e8-bd3133d08f66" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/PasswordGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/password-generator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/password-generator.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserKeyWords.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserKeyWords.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/keyword_list.csv" beforeDir="false" afterPath="$PROJECT_DIR$/assets/keyword_list.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +95,7 @@
       <workItem from="1730726029843" duration="132000" />
       <workItem from="1730745426317" duration="1504000" />
       <workItem from="1730821688430" duration="11278000" />
-      <workItem from="1730890743871" duration="1937000" />
+      <workItem from="1730890743871" duration="2051000" />
     </task>
     <servers />
   </component>
