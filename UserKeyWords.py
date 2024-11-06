@@ -83,7 +83,7 @@ class UserKeyWords:
             print('1. Add keyword')
             print('2. Remove keyword')
             print('3. Display keywords')
-            print('4. Exit')
+            print('4. Continue to password generation')
 
             option = input()
 
@@ -95,10 +95,13 @@ class UserKeyWords:
                 case '3':
                     self.display_keyword_list()
                 case '4':
-                    return
+                    if not self.keyword_list:
+                        print('Keyword list is empty.')
+                        print('Add a keyword to your list before generating password. ')
+                        input('Press Enter to continue...')
+                    else:
+                        os.system('cls')
+                        return
                 case _:
                     print('Invalid option')
                     input('Press Enter to continue')
-
-
-test1 = UserKeyWords()
